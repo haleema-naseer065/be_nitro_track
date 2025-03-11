@@ -52,8 +52,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Nitro_Track.wsgi.application'
-
-connect('mongo_db_name', host='mongodb://localhost:27017/mongo_db_name') 
+# 
+connect('nitro-app', host='mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0') 
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'en-us'
