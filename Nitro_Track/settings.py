@@ -52,8 +52,21 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Nitro_Track.wsgi.application'
-# 
-connect('nitro-app', host='mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0') 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Change this for PostgreSQL or MySQL
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
+
+MONGO_DB_NAME = "nitro-app"
+MONGO_DB_HOST = "mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+connect(
+    db=MONGO_DB_NAME,
+    host=MONGO_DB_HOST
+)
+# connect('nitro-app', host='mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0') 
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'en-us'
