@@ -10,7 +10,11 @@ SECRET_KEY_JWT = os.getenv("JWT_SECRET", "your-secret-key")  # Change this to a 
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "benitrotrack-production.up.railway.app",
+    "localhost",
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
