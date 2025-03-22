@@ -64,7 +64,7 @@ DATABASES = {
 }
 
 MONGO_DB_NAME = "nitro-app"
-MONGO_DB_HOST = "mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_DB_HOST = "mongodb+srv://haleemanaseer065:Haleema065@cluster0.xz9bo.mongodb.net/nitro-app?retryWrites=true&w=majority&appName=Cluster0"
 
 connect(
     db=MONGO_DB_NAME,
