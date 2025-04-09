@@ -1,3 +1,4 @@
+
 import datetime
 import json
 import bcrypt
@@ -105,6 +106,51 @@ def signin_user(request):
     return JsonResponse({"error": "Invalid request method"}, status=405)
 
 
+# @jwt_required
+# def user_profile(request):
+#     try:
+#         user = User.objects(id=request.user_id).first()
+#         if not user:
+#             return JsonResponse({"error": "User not found"}, status=404)
+
+#         return JsonResponse({
+#             "id": str(user.id),
+#             "name": user.name,
+#             "phoneNumber": user.phoneNumber,
+#             "role": user.role
+#         }, status=200)
+
+#     except Exception as e:
+#         return JsonResponse({"error": str(e)}, status=500)
+
+# -------------------------
+# New Views with JWT Protection
+# -------------------------
+
+#@method_decorator(csrf_exempt, name='dispatch')
+# class ViewUsers(APIView):
+#     #@jwt_required
+#     def post(self, request):
+#         try:
+#             # Get user info from JWT
+#             user = User.objects(id=request.user_id).first()
+
+#             # Check if user is admin
+#             if user.role != 'admin':
+#                 return Response({"error": "Access denied. Only admins can view users."}, status=status.HTTP_403_FORBIDDEN)
+
+#             users = User.objects(role='user').only("phoneNumber", "name", "role")
+#             users_list = [{
+#                 "phoneNumber": u.phoneNumber,
+#                 "name": u.name,
+#                 "role": u.role
+#             } for u in users]
+
+#             return Response({"users": users_list}, status=status.HTTP_200_OK)
+
+#         except Exception as e:
+#             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @jwt_required
 def user_profile(request):
     try:
@@ -112,43 +158,25 @@ def user_profile(request):
         if not user:
             return JsonResponse({"error": "User not found"}, status=404)
 
-        return JsonResponse({
-            "id": str(user.id),
-            "name": user.name,
-            "phoneNumber": user.phoneNumber,
-            "role": user.role
-        }, status=200)
+        # Only allow admin to fetch all users
+        if user.role != "admin":
+            return JsonResponse({"error": "Access denied. Admins only."}, status=403)
+
+        all_users = User.objects()
+        user_data = []
+
+        for u in all_users:
+            user_data.append({
+                "id": str(u.id),
+                "name": u.name,
+                "phoneNumber": u.phoneNumber,
+                "role": u.role
+            })
+
+        return JsonResponse({"users": user_data}, status=200)
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-
-# -------------------------
-# New Views with JWT Protection
-# -------------------------
-
-#@method_decorator(csrf_exempt, name='dispatch')
-class ViewUsers(APIView):
-    #@jwt_required
-    def post(self, request):
-        try:
-            # Get user info from JWT
-            user = User.objects(id=request.user_id).first()
-
-            # Check if user is admin
-            if user.role != 'admin':
-                return Response({"error": "Access denied. Only admins can view users."}, status=status.HTTP_403_FORBIDDEN)
-
-            users = User.objects(role='user').only("phoneNumber", "name", "role")
-            users_list = [{
-                "phoneNumber": u.phoneNumber,
-                "name": u.name,
-                "role": u.role
-            } for u in users]
-
-            return Response({"users": users_list}, status=status.HTTP_200_OK)
-
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 #@method_decorator(csrf_exempt, name='dispatch')

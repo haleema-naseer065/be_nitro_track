@@ -98,7 +98,6 @@ celerybeat-schedule.*
 *.sage.py 
 
 # Environments 
-.env 
 .venv 
 env/ 
 venv/ 
@@ -130,9 +129,10 @@ Control.system-ca-bundle
 GitHub.sublime-settings 
 
 # Visual Studio Code # 
-.vscode/* 
 !.vscode/settings.json 
 !.vscode/tasks.json 
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+config.bat
+node_modules

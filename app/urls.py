@@ -9,7 +9,7 @@ urlpatterns = [
     path('api/me', views.user_profile, name='user_profile'), 
 
     # New Endpoints
-    path('users/view/', ViewUsers.as_view(), name='view_users'),
+    # path('users/view/', ViewUsers.as_view(), name='view_users'),
     path('users/delete/', DeleteUser.as_view(), name='delete_user'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
 ]
