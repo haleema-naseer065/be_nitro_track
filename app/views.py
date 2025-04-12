@@ -2,14 +2,6 @@ import datetime
 import json
 import bcrypt
 import jwt as pyjwt
-# import cv2
-# import numpy as np
-# import os
-# from django.http import JsonResponse, HttpResponse
-# from django.core.files.storage import FileSystemStorage
-# from matplotlib import pyplot as plt
-# import io
-# import base64
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
