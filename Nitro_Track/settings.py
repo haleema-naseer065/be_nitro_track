@@ -12,7 +12,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "benitrotrack-production.up.railway.app",
-    "http://web-production-5fe5.up.railway.app/",
+    "web-production-5fe5.up.railway.app",
     "localhost",
     "127.0.0.1",
 ]
