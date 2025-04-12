@@ -9,7 +9,7 @@ urlpatterns = [
     path('api/me', views.user_profile, name='user_profile'), 
 
     #Image Segmentation and Nitrogen Estimation end point
-    path('upload/', views.upload_and_process, name='upload_and_process'),
+    # path('upload/', views.upload_and_process, name='upload_and_process'),
 
 
     # New Endpoints
