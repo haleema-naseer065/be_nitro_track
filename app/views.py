@@ -347,6 +347,7 @@ def convert_image_to_base64(image):
     return base64.b64encode(img_encoded).decode('utf-8')
 
 @csrf_exempt
+@jwt_required
 def upload_and_process(request):
     if request.method == 'POST' and request.FILES.get('image') and request.POST.get('crop_id') is not None:
         try:

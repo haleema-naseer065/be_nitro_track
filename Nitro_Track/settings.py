@@ -63,12 +63,13 @@ DATABASES = {
     }
 }
 
-MONGO_DB_NAME = "nitro-app"
-MONGO_DB_HOST = "mongodb+srv://haleemanaseer065:ABCTEST@cluster0.xz9bo.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0"  # Replace with your MongoDB connection string
+MONGO_DB_NAME = "myDatabase"
+MONGO_DB_HOST = "mongodb+srv://haleemanaseer065:helloworld@cluster0.xz9bo.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0"  # Replace with your MongoDB connection string
 
 connect(
-    db=MONGO_DB_NAME,
-    host=MONGO_DB_HOST
+    db="myDatabase",
+    host="mongodb+srv://haleemanaseer065:helloworld@cluster0.xz9bo.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0",
+    port=27017
 )
 # connect('nitro-app', host='mongodb+srv://haleemanaseer065:ONVO73fO1THqmQBt@cluster0.xz9bo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0') 
 AUTH_PASSWORD_VALIDATORS = []
