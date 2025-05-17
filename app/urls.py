@@ -8,12 +8,13 @@ urlpatterns = [
     path('api/sign-in', views.signin_user, name='get_users'),  
     path('api/me', views.user_profile, name='user_profile'), 
 
-    #Image Segmentation and Nitrogen Estimation end point
-    # path('upload/', views.upload_and_process, name='upload_and_process'),
-
 
     # New Endpoints
     path('users/view/', ViewUsers.as_view(), name='view_users'),
     path('users/delete/', DeleteUser.as_view(), name='delete_user'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
+
+     #Image Segmentation and Nitrogen Estimation end point
+    path('upload/', views.upload_and_process, name='upload_and_process'),
+
 ]
